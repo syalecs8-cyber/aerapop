@@ -1,0 +1,617 @@
+indeks.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AeraPop</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  /* Reset */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff5fb;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  a {
+    color: #d6336c;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Container wrapper */
+  .wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+  }
+
+  /* Navbar */
+  header {
+    background: #1e1e1e;
+    color: white;
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 24px;
+  }
+  .nav-menu a {
+    color: white;
+    font-weight: 600;
+  }
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+  }
+
+  /* MAIN LAYOUT: Two column */
+  main {
+    background: white;
+    min-height: 100vh;
+  }
+
+  /* === HOME PAGE === */
+  .home {
+    padding: 3rem 2rem;
+  }
+
+  .home .top-section {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-text {
+    flex: 1 1 500px;
+  }
+  .hero-text h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  .hero-text h1 span {
+    color: #d6336c;
+    font-family: 'Poppins', cursive;
+  }
+  .hero-text p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 1rem;
+  }
+  .btn {
+    background: #d6336c;
+    border-radius: 30px;
+    padding: 12px 28px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 6px 10px rgba(214, 51, 108, 0.3);
+    transition: background 0.3s ease;
+  }
+  .btn:hover {
+    background: #b82a58;
+  }
+  .btn-secondary {
+    background: #ffe3f1;
+    color: #d6336c;
+    box-shadow: none;
+  }
+  .btn-secondary:hover {
+    background: #f6c8db;
+  }
+
+  .hero-img {
+    flex: 1 1 350px;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 30px #fcb1bb;
+    max-width: 350px;
+    aspect-ratio: 1 / 1;
+  }
+  .hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Feature images below hero*/
+  .feature-images {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .feature-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(214, 51, 108, 0.2);
+  }
+  .feature-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Navigation bar of homepage under header */
+  .home-nav {
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #a41d48;
+  }
+  .home-nav a {
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+  .home-nav a.active {
+    background: #f9bdd1;
+    font-weight: 700;
+  }
+  .home-nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* === ABOUT PAGE === */
+  .about {
+    padding: 4rem 3rem 3rem 3rem;
+    background: #ffeff7;
+    border-radius: 20px;
+    margin: 2rem auto 3rem auto;
+    max-width: 900px;
+  }
+
+  .about h2 {
+    font-weight: 700;
+    margin-bottom: 1.4rem;
+    text-align: center;
+    color: #d6336c;
+  }
+
+  .about-text {
+    background: white;
+    padding: 1.8rem 2rem;
+    border-radius: 22px;
+    box-shadow: 0 8px 20px rgba(214, 51, 108, 0.1);
+    margin-bottom: 3rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: #4b4b4b;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .about-text strong {
+    color: #d6336c;
+  }
+
+  /* Visions and Missions flex */
+  .visions-missions {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .vision, .mission {
+    background: white;
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 15px rgba(214, 51, 108, 0.1);
+    width: 280px;
+  }
+
+  .vision h3, .mission h3 {
+    color: #d6336c;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .vision p, .mission ul {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  .mission ul {
+    padding-left: 1.2rem;
+  }
+  .mission ul li {
+    margin-bottom: 0.5rem;
+    list-style: none;
+    position: relative;
+  }
+  .mission ul li::before {
+    content: "♥";
+    color: #d6336c;
+    position: absolute;
+    left: -1.2rem;
+  }
+
+  /* Quality Promise section */
+  .quality-promise {
+    max-width: 980px;
+    margin: 2rem auto 4rem auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .promise-card {
+    background: white;
+    max-width: 260px;
+    padding: 1.6rem 1.8rem;
+    border-radius: 14px;
+    box-shadow: 0 7px 15px rgba(214, 51, 108, 0.15);
+    text-align: center;
+  }
+
+  .promise-card h4 {
+    margin-bottom: 0.6rem;
+    color: #d6336c;
+  }
+  .promise-card p {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  /* Signature Menu Section */
+  .signature-menu {
+    padding: 2.5rem 1rem 4rem 1rem;
+    background: #ffeef6;
+    border-radius: 24px;
+    margin-bottom: 3rem;
+  }
+
+  .signature-menu h3 {
+    text-align: center;
+    font-weight: 700;
+    color: #a41d48;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .menu-cards {
+    display: flex;
+    justify-content: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .menu-card {
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 22px rgba(214, 51, 108, 0.12);
+    max-width: 320px;
+    padding: 1.4rem 1.2rem 2.4rem 1.2rem;
+    text-align: center;
+  }
+  .menu-card img {
+    width: 100%;
+    border-radius: 14px;
+    margin-bottom: 1.2rem;
+    object-fit: cover;
+    height: 200px;
+  }
+  .menu-card h4 {
+    color: #d6336c;
+    margin-bottom: 0.5rem;
+  }
+  .menu-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  /* Join the Fun Gallery */
+  .join-fun {
+    max-width: 1080px;
+    margin: 1.5rem auto 4rem auto;
+  }
+
+  .join-fun h3 {
+    text-align: center;
+    font-weight: 700;
+    color: #9f2540;
+    margin-bottom: 2rem;
+    font-size: 1.9rem;
+  }
+
+  .gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .gallery img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(214, 51, 108, 0.1);
+    cursor: pointer;
+    transition: scale 0.3s ease;
+  }
+  .gallery img:hover {
+    scale: 1.1;
+  }
+
+  /* Footer */
+  footer {
+    background: #f8d5e1;
+    padding: 2rem 2rem 1.2rem 2rem;
+    font-size: 0.9rem;
+    color: #6e255f;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  footer div {
+    margin-bottom: 0.7rem;
+  }
+  footer a {
+    color: #ad346a;
+    font-weight: 600;
+  }
+  footer .footer-section {
+    min-width: 150px;
+  }
+  footer .footer-section h5 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  footer .footer-section ul {
+    list-style: none;
+  }
+  footer .footer-section ul li {
+    margin-bottom: 6px;
+  }
+  footer small {
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #9f255f;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .home .top-section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-text {
+      flex: unset;
+    }
+    .hero-img {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .visions-missions {
+      justify-content: center;
+    }
+
+    .menu-cards {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      gap: 12px;
+      font-size: 1rem;
+    }
+    .nav-menu {
+      display: none;
+    }
+    .hamburger {
+      display: block;
+      color: white;
+      position: absolute;
+      right: 20px;
+      top: 18px;
+    }
+    footer {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    footer .footer-section {
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header>
+    <div class="hamburger">&#9776;</div>
+    <div>AERAPOP</div>
+    <nav class="nav-menu">
+      <a href="#home" class="active">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME Section -->
+    <section class="home wrapper" id="home">
+      <div class="top-section">
+        <div class="hero-text">
+          <h1>Let the Fun <span>Pop</span> with AeraPop!</h1>
+          <p>Dive into a world of texture and color. Handcrafted slimes designed to satisfy your senses and spark your creativity.</p>
+          <div class="btn-group">
+            <button class="btn">Shop Now</button>
+            <button class="btn btn-secondary">View Gallery</button>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img src="https://images.unsplash.com/photo-1579189720419-6115e514c6e9?auto=format&fit=crop&w=600&q=80" alt="Pink slime close up" />
+        </div>
+      </div>
+
+      <div class="feature-images">
+        <div class="feature-img">
+          <img src="https://images.unsplash.com/photo-1615604030053-1e0533158fa9?auto=format&fit=crop&w=400&q=80" alt="Slime hands" />
+        </div>
+        <div class="feature-img">
+          <img src="https://images.unsplash.com/photo-1590080877777-e30882d6dfc5?auto=format&fit=crop&w=400&q=80" alt="Slime jars" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT Section -->
+    <section class="about wrapper" id="about">
+      <h2>Get to Know Us</h2>
+
+      <div class="about-text">
+        <p><strong>About Us – AeraPop</strong><br />
+        AeraPop adalah brand slime lokal yang menghadirkan slime handmade berkualitas dengan tekstur menenangkan dan desain super lucu.</p>
+        <p>Dibuat dengan penuh cinta dan detail, setiap slime AeraPop siap jadi teman stress relief yang bikin hari lebih ceria.</p>
+      </div>
+
+      <div class="visions-missions">
+        <div class="vision">
+          <h3>Visi (Vision)</h3>
+          <p>Menjadi brand slime lokal favorit yang menghadirkan kebahagiaan lewat produk kreatif, aman, dan berkualitas.</p>
+        </div>
+        <div class="mission">
+          <h3>Misi (Mission)</h3>
+          <ul>
+            <li>Menciptakan slime handmade dengan tekstur terbaik dan desain menarik</li>
+            <li>Mengoptimalkan pengalaman bermain slime yang fun dan menyenangkan</li>
+            <li>Menjaga kualitas, kebersihan, dan kepuasan pelanggan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quality-promise">
+        <div class="promise-card">
+          <h4>Safe Materials</h4>
+          <p>We use only non-toxic glue and safe tools to keep kids safe.</p>
+        </div>
+        <div class="promise-card">
+          <h4>Premium Texture</h4>
+          <p>Thick, glossy, and melty; we research the recipe for the ultimate AERAPOP sensation.</p>
+        </div>
+        <div class="promise-card">
+          <h4>Handmade with Love</h4>
+          <p>No factories here! Every detail is hand-sewn, made and packed by hand in our studio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Signature Menu -->
+    <section class="signature-menu wrapper" id="shop">
+      <h3>Our Signature Menu</h3>
+      <div class="menu-cards">
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1579189720440-245c4fcbc0a7?auto=format&fit=crop&w=400&q=80" alt="Original Slime" />
+          <h4>Original Slime</h4>
+          <p>Thick, glossy, and stretchy slimes. The classic favorite that never goes out of style.</p>
+        </div>
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1580818904367-012f3cc82053?auto=format&fit=crop&w=400&q=80" alt="Crystal Pop" />
+          <h4>Crystal Pop</h4>
+          <p>Translucent beauty that looks like frozen glass. Just squeeze, stretch, or enjoy the pop.</p>
+        </div>
+        <div class="menu-card">
+          <img src="https://images.unsplash.com/photo-1563333384-cbe9b718a41b?auto=format&fit=crop&w=400&q=80" alt="Tofu Slime" />
+          <h4>Tofu Slime</h4>
+          <p>Inspired by tofu, this texture is incredibly fluffy, melty, and soft. A unique sensory experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join The Fun Gallery -->
+    <section class="join-fun wrapper" id="contact">
+      <h3>Join the Fun</h3>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1579189720419-6115e514c6e9?auto=format&fit=crop&w=150&q=80" alt="Pink slime" />
+        <img src="https://images.unsplash.com/photo-1590080877777-e30882d6dfc5?auto=format&fit=crop&w=150&q=80" alt="Slime hand close up" />
+        <img src="https://images.unsplash.com/photo-1623016483963-1208de2d3c99?auto=format&fit=crop&w=150&q=80" alt="Pastel slime swirl" />
+        <img src="https://images.unsplash.com/photo-1602689246853-09f767d6a767?auto=format&fit=crop&w=150&q=80" alt="Blue play slime" />
+        <img src="https://images.unsplash.com/photo-1589241571310-8e7f4c4bdb44?auto=format&fit=crop&w=150&q=80" alt="Slime balls" />
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-section">
+      <h5>AeraPop</h5>
+      <p>Crafting happiness, one pop at a time. Quality slimes for everyone.</p>
+    </div>
+    <div class="footer-section">
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="#shop">All Slimes</a></li>
+        <li><a href="#shop">New Arrivals</a></li>
+        <li><a href="#shop">Best Sellers</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#contact">FAQ</a></li>
+        <li><a href="#contact">Shipping & Returns</a></li>
+        <li><a href="#contact">Store Care Guide</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="https://instagram.com/aerapop" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://shopee.co.id/aerapop" target="_blank" rel="noopener">Shopee</a></li>
+      </ul>
+    </div>
+    <small>&copy; 2024 AeraPop. All rights reserved.</small>
+  </footer>
+</body>
+</html>
